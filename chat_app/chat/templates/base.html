@@ -1,0 +1,120 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+     <title>{% block title %}{% endblock %} </title>
+     <meta charset = "UTF-8">
+     <link href="{% static 'scripts/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+     <link href="{% static 'scripts/bootstrap/js/bootstrap.js' %}" rel="stylesheet">
+     {% block extra_head %}{% endblock %}
+</head>
+<nav class=""navbar navbar-inverse"">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><font size="7">Rêve cool</font></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+ 
+         
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+            {% if user.is_authenticated %}
+            
+       
+        <button type="submit" class="btn btn-default"> <a href="{% url 'logout' %}">Logout</a></button>
+         {% endif %}
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        
+     
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<style >
+
+body{
+    -webkit-font-smoothing:antialiased;
+    text-rendering: optimizeLegibility;
+    
+    padding-top: 70px;
+    background: url('images/img.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+   ;
+}
+
+
+</style>
+
+<body background="img.jpg">
+    <header>
+    <div class="Header">
+    <div class ="container">
+  <h1>{% block header_text %}{% endblock %}</h1>
+  <p>*.*.*.*.*.*.*.*.*.*.*.*.*.*.*</p>
+
+  
+</div>
+</div>
+     
+
+    </header>
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+    {% block extra_body %}{% endblock %}
+</body>
+<div class="container well">
+	<h2><center>#KA-ME-HA-ME-HA!!#</center></h2>
+</div>
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <h3 class="footertext">by Sarthak Srivastava</h3>
+            <br>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                  <br>
+                  <h4 class="footertext">Programmer</h4>
+                  <p class="footertext">You can thank all the crazy programming here to this guy.<br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                  <br>
+                  <h4 class="footertext">Artist</h4>
+                  <p class="footertext">All the images here are hand drawn by this man.<br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                  <br>
+                  <h4 class="footertext">Designer</h4>
+                  <p class="footertext">This pretty site and the copy it holds are all thanks to this guy.<br>
+                </center>
+              </div>
+            </div>
+            <div class="row">
+</html>
