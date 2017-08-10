@@ -44,27 +44,9 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<style >
 
-body{
-    -webkit-font-smoothing:antialiased;
-    text-rendering: optimizeLegibility;
-    
-    padding-top: 70px;
-    background: url('images/img.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-   ;
-}
-
-
-</style>
-
-<body background="img.jpg">
+<body id="bg" style="background-image: url('{% static "img.jpg"%}')";>
+<body>
     <header>
     <div class="Header">
     <div class ="container">
@@ -83,9 +65,8 @@ body{
     </section>
     {% block extra_body %}{% endblock %}
 </body>
-<div class="container well">
-	<h2><center>#KA-ME-HA-ME-HA!!#</center></h2>
-</div>
+<h2><center><img src="{% static "anon.jpg" %}" alt="Mountain View" style="width:1200px;height:700px;"></center></h2>
+
 <div id="footer">
     <div class="container">
         <div class="row">
