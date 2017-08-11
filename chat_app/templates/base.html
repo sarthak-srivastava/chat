@@ -88,4 +88,7 @@
               </div>
             </div>
             <div class="row">
+            {% if user.is_authenticated %}
+            <h1>Views:{{ page }}</h1>
+            {% endif %}
 </html>

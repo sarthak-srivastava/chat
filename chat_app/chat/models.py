@@ -39,3 +39,5 @@ class Room(models.Model):
         self.websocket_group.send(
             {"text": json.dumps(final_msg)}
         )
+class PageView(models.Model):
+    hits=models.IntegerField(default=0)
