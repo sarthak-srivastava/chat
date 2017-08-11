@@ -97,7 +97,7 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = []
 
 LOGIN_REDIRECT_URL = "/"
-
+LOGOUT_REDIRECT_URL = "/home"
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/

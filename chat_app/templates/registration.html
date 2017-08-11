@@ -1,14 +1,10 @@
 {% extends "base.html" %}
-
-{% block title %}Register{% endblock %}
-{% block header_text %}Register{% endblock %}
-
+{% block title %}User Registration{% endblock %}
+{% block head %}User Registration{% endblock %}
 {% block content %}
-
-    <form action="." method="POST">
-        {{ form }}
-        {% csrf_token %}
-        <button>Register</button>
-    </form>
-
+<form method="post" action=".">
+{{ form.as_p }}
+<input type="submit" value="register" />
+{% csrf_token %}
+</form>
 {% endblock %}

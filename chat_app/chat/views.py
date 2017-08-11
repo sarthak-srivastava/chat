@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Room
-from .forms import UserForm
+from django.contrib.auth.models import User
 from django.views.generic import View
 
 @login_required
@@ -17,25 +17,14 @@ def index(request):
     return render(request, "index.html", {
         "rooms": rooms,
     })
-class UserFormView(View):
-    form_class = UserForm
-    template_name = "registration.html"
-    #to render empty form
-    def get(self,request):
-        form =self.form_class(None)
-        return render(request,self.template_name,{'form':form})
-    #To save data in the database
-    def post(self,request):
-        form =self.form_class(request.POST)
+
+from chat.forms import *
+def register_page(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit = False)
-            #normalized data
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user.set_password(password)
-            user.save()
-            user = authenticate(username = username , password = password)
-            if user is not None:
-                if user.is_active:
-                    login(request,user)
-                    return redirect("chat:index")
+            user = User.objects.create_user(username=form.cleaned_data['username'],password=form.cleaned_data['password1'])
+            return HttpResponseRedirect('/')
+    form = RegistrationForm()
+    
+    return render(request,'registration.html',{'form':form ,})
