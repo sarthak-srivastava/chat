@@ -16,13 +16,11 @@ def ws_connect(message):
 @channel_session_user
 def ws_disconnect(message):
 	for room_id in message.channel_session.get("rooms", set()):
-        try:
-            room = Room.objects.get(pk=room_id)
-            # Removes us from the room's send group. If this doesn't get run,
-            # we'll get removed once our first reply message expires.
-            room.websocket_group.discard(message.reply_channel)
-        except Room.DoesNotExist:
-            pass
+		try:
+			room = Room.objects.get(pk=room_id)
+			room.websocket_group.discard(message.reply_channel)
+		except Room.DoesNotExist:
+			pass
 def ws_receive(message):
 	payload = json.loads(message["text"])
 	payload['reply_channel'] = message.content['reply_channel']
