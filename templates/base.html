@@ -1,0 +1,90 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+     <title>{% block title %}{% endblock %} </title>
+     <meta charset = "UTF-8">
+     <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="screen" />
+     <script src="{% static 'js/jquery-1.12.2.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'channels/js/websocketbridge.js' %}" type="text/javascript"></script>
+     <link href="{% static 'scripts/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+     <link href="{% static 'scripts/bootstrap/js/bootstrap.js' %}" rel="stylesheet">
+     {% block extra_head %}{% endblock %}
+</head>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><font size ='8' font face = "Helvetica">ChannelIn</font></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {% if not user.is_authenticated %}
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      {% endif %}
+      {% if user.is_authenticated %}
+      <li><a href="/accounts/logout/"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+    
+            
+
+
+<body id="bg" style="background-image: url('{% static "img.jpg"%}')";>
+<body>
+    <header>
+    <div class="container">
+  <div style="background:transparent " class="jumbotron" id ="jumbo">
+  <h1>{% block header_text %}{% endblock %}</h1>
+  </div>
+  </div>
+
+  
+
+     
+
+    </header>
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+    {% block extra_body %}{% endblock %}
+</body>
+<h2><center><img src="{% static "anon.jpg" %}" alt="Mountain View" style="width:1200px;height:700px;"></center></h2>
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <h3 class="footertext">by Sarthak Srivastava</h3>
+            <br>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                  <br>
+                  <h4 class="footertext">Programmer</h4>
+                  <p class="footertext">You can thank all the crazy programming here to this guy.<br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                  <br>
+                  <h4 class="footertext">Artist</h4>
+                  <p class="footertext">All the images here are hand drawn by this man.<br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                  <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                  <br>
+                  <h4 class="footertext">Designer</h4>
+                  <p class="footertext">This pretty site and the copy it holds are all thanks to this guy.<br>
+                </center>
+              </div>
+            </div>
+            <div class="row">
+</html>
